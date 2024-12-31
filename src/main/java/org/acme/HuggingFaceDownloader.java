@@ -61,6 +61,14 @@ public class HuggingFaceDownloader {
 
             Repository repository = new FileRepository(new File(modelDir.toAbsolutePath().toFile(), ".git"));
             Git git = new Git(repository);
+
+            /**LfsFactory.LfsInstallCommand installCommand = BuiltinLFS.getInstance().getInstallCommand();
+            try {
+                installCommand.setRepository(repository).call();
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }**/
+
             StoredConfig config = repository.getConfig();
             config.setBoolean(ConfigConstants.CONFIG_FILTER_SECTION,
                     ConfigConstants.CONFIG_SECTION_LFS,
